@@ -34,16 +34,37 @@ namespace OpenCvSharp.Sandbox
             BForceMatcherSample();*/
             //ChamferMatchingSample();
 
-            ///*
+            /*
             var img1 = new IplImage("data/lenna.png", LoadMode.Color);
             var img2 = new IplImage("data/match2.png", LoadMode.Color);
             Surf(img1, img2);
+            //*/
+
+            ///*
+            var img = new IplImage("data/lenna.png", LoadMode.Color);
+            var points = new[]
+            {
+                new CvPoint(100, 100),
+                new CvPoint(200, 100),
+                new CvPoint(200, 200),
+            };
+            PolygonTest(img, points);
             //*/
 
             //Mat[] mats = StitchingPreprocess(400, 400, 10);
             //Stitching(mats);
             //Track();
             //Run();
+        }
+
+        private static void PolygonTest(IplImage img, IEnumerable<CvPoint> points)
+        {
+            Cv.PolyLine(img, new [] { points.ToArray(), points.Select(p => new CvPoint(p.X + 100, p.Y + 100)).ToArray(), }, true, CvColor.Red, 1);
+
+            using (new CvWindow(img))
+            {
+                Cv.WaitKey();
+            }
         }
 
         private static void VideoCaptureSample()

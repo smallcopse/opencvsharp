@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace OpenCvSharp.CPlusPlus
 {
@@ -128,17 +125,17 @@ namespace OpenCvSharp.CPlusPlus
         /// <param name="frame0"></param>
         /// <param name="frame1"></param>
         /// <param name="flow"></param>
-        protected override void Calc(
+        public override void Calc(
             InputArray frame0, InputArray frame1, OutputArray flow)
         {
             if (disposed)
-                throw new ObjectDisposedException("DenseOpticalFlowImpl");
+                throw new ObjectDisposedException(nameof(DenseOpticalFlowImpl));
             if (frame0 == null)
-                throw new ArgumentNullException("frame0");
+                throw new ArgumentNullException(nameof(frame0));
             if (frame1 == null)
-                throw new ArgumentNullException("frame1");
+                throw new ArgumentNullException(nameof(frame1));
             if (flow == null)
-                throw new ArgumentNullException("flow");
+                throw new ArgumentNullException(nameof(flow));
             frame0.ThrowIfDisposed();
             frame1.ThrowIfDisposed();
             flow.ThrowIfNotReady();
@@ -155,7 +152,7 @@ namespace OpenCvSharp.CPlusPlus
         public override void CollectGarbage()
         {
             if (disposed)
-                throw new ObjectDisposedException("DenseOpticalFlowImpl");
+                throw new ObjectDisposedException(nameof(DenseOpticalFlowImpl));
             NativeMethods.video_DenseOpticalFlow_collectGarbage(ptr);
         }
         #endregion
