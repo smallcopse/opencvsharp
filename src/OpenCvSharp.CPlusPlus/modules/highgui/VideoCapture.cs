@@ -1950,13 +1950,13 @@ namespace OpenCvSharp.CPlusPlus
         /// </summary>
         /// <returns></returns>
 #endif
-        public void Read(Mat image)
+        public bool Read(Mat image)
         {
             ThrowIfDisposed();
             if(image == null)
-                throw new ArgumentNullException("image");
+                throw new ArgumentNullException(nameof(image));
             image.ThrowIfDisposed();
-            NativeMethods.highgui_VideoCapture_read(ptr, image.CvPtr);
+            return NativeMethods.highgui_VideoCapture_read(ptr, image.CvPtr) != 0;
         }
         #endregion
         #region Set

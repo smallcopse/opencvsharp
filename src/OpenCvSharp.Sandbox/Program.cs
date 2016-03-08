@@ -40,7 +40,7 @@ namespace OpenCvSharp.Sandbox
             Surf(img1, img2);
             //*/
 
-            ///*
+            /*
             var img = new IplImage("data/lenna.png", LoadMode.Color);
             var points = new[]
             {
@@ -51,10 +51,39 @@ namespace OpenCvSharp.Sandbox
             PolygonTest(img, points);
             //*/
 
+            CaptureTest();
+
             //Mat[] mats = StitchingPreprocess(400, 400, 10);
             //Stitching(mats);
             //Track();
             //Run();
+        }
+
+        private static void CaptureTest()
+        {
+            var capture = new VideoCapture(@"C:\a.wmv");
+
+            if (!capture.IsOpened()) throw new Exception("Video can`t be played");
+
+            int sleepTime = (int) Math.Round(1000/capture.Fps);
+            using (var window = new Window("capture"))
+            {
+                var trackbar = window.CreateTrackbar2("Position", 0, capture.FrameCount,
+                    (int pos, object userdata) =>
+                    {
+                        capture.PosFrames = pos;
+                    }, null);
+                // Frame image buffer
+                Mat image = new Mat();
+
+                // When the movie playback reaches end, Mat.data becomes NULL.
+                while (capture.Read(image))
+                {
+                    trackbar.Pos = capture.PosFrames;
+                    window.ShowImage(image);
+                    Cv2.WaitKey(sleepTime);
+                }
+            }
         }
 
         private static void PolygonTest(IplImage img, IEnumerable<CvPoint> points)
