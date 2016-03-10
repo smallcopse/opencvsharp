@@ -127,9 +127,9 @@ namespace OpenCvSharp.CPlusPlus
             CvRTParams param = null)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
 
 			if(param == null)
 				param = new CvRTParams();
@@ -184,9 +184,9 @@ namespace OpenCvSharp.CPlusPlus
             CvRTParams param = null)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
 
             if (param == null)
                 param = new CvRTParams();
@@ -223,7 +223,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual double Predict(CvMat sample, CvMat missing = null)
 		{
 			if (sample == null)
-                throw new ArgumentNullException("sample");
+                throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
             return NativeMethods.ml_CvRTrees_predict_CvMat(
@@ -247,7 +247,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual double Predict(Mat sample, Mat missing = null)
         {
             if (sample == null)
-                throw new ArgumentNullException("sample");
+                throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
             return NativeMethods.ml_CvRTrees_predict_CvMat(
@@ -274,7 +274,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual double PredictProb(CvMat sample, CvMat missing = null)
         {
             if (sample == null)
-                throw new ArgumentNullException("sample");
+                throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
             return NativeMethods.ml_CvRTrees_predict_prob_CvMat(
@@ -298,7 +298,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual double PredictProb(Mat sample, Mat missing = null)
         {
             if (sample == null)
-                throw new ArgumentNullException("sample");
+                throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
             return NativeMethods.ml_CvRTrees_predict_prob_CvMat(
@@ -349,9 +349,9 @@ namespace OpenCvSharp.CPlusPlus
             CvMat missing1 = null, CvMat missing2 = null)
         {
             if (sample1 == null)
-                throw new ArgumentNullException("sample1");
+                throw new ArgumentNullException(nameof(sample1));
             if (sample2 == null)
-                throw new ArgumentNullException("sample2");
+                throw new ArgumentNullException(nameof(sample2));
 
             return NativeMethods.ml_CvRTrees_get_proximity(
                 ptr, sample1.CvPtr, sample2.CvPtr, 
