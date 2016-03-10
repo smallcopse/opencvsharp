@@ -191,7 +191,7 @@ namespace OpenCvSharp.CPlusPlus
             if (param == null)
                 param = new CvRTParams();
 
-            return NativeMethods.ml_CvRTrees_train_CvMat(
+            return NativeMethods.ml_CvRTrees_train_Mat(
                 ptr,
                 trainData.CvPtr,
                 (int)tflag,
