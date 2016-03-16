@@ -193,9 +193,9 @@ namespace OpenCvSharp.CPlusPlus
             bool updateBase = false)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
             trainData.ThrowIfDisposed();
             responses.ThrowIfDisposed();
 
@@ -241,9 +241,9 @@ namespace OpenCvSharp.CPlusPlus
             bool updateBase = false)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
             trainData.ThrowIfDisposed();
             responses.ThrowIfDisposed();
 
@@ -290,7 +290,7 @@ namespace OpenCvSharp.CPlusPlus
             CvMat dist = null)
         {
             if (samples == null)
-                throw new ArgumentNullException("samples");
+                throw new ArgumentNullException(nameof(samples));
                         
             if (neighbors == null)
             {
@@ -345,13 +345,13 @@ namespace OpenCvSharp.CPlusPlus
             Mat dists)
         {
             if (samples == null)
-                throw new ArgumentNullException("samples");
+                throw new ArgumentNullException(nameof(samples));
             if (results == null)
-                throw new ArgumentNullException("results");
+                throw new ArgumentNullException(nameof(results));
             if (neighborResponses == null)
-                throw new ArgumentNullException("neighborResponses");
+                throw new ArgumentNullException(nameof(neighborResponses));
             if (dists == null)
-                throw new ArgumentNullException("dists");
+                throw new ArgumentNullException(nameof(dists));
             samples.ThrowIfDisposed();
             results.ThrowIfDisposed();
             neighborResponses.ThrowIfDisposed();

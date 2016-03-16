@@ -58,9 +58,9 @@ namespace OpenCvSharp.CPlusPlus
             CvMat sampleIdx = null)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
             trainData.ThrowIfDisposed();
             responses.ThrowIfDisposed();
 
@@ -93,9 +93,9 @@ namespace OpenCvSharp.CPlusPlus
             Mat sampleIdx = null)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
             trainData.ThrowIfDisposed();
             responses.ThrowIfDisposed();
 
@@ -177,9 +177,9 @@ namespace OpenCvSharp.CPlusPlus
             bool update = false)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
 
             return NativeMethods.ml_CvNormalBayesClassifier_train_CvMat(
                 ptr, 
@@ -219,9 +219,9 @@ namespace OpenCvSharp.CPlusPlus
             bool update = false)
         {
             if (trainData == null)
-                throw new ArgumentNullException("trainData");
+                throw new ArgumentNullException(nameof(trainData));
             if (responses == null)
-                throw new ArgumentNullException("responses");
+                throw new ArgumentNullException(nameof(responses));
 
             return NativeMethods.ml_CvNormalBayesClassifier_train_Mat(
                 ptr,
@@ -248,7 +248,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual float Predict(CvMat sample, CvMat results = null)
         {
             if (sample == null)
-                throw new ArgumentNullException("sample");
+                throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
             return NativeMethods.ml_CvNormalBayesClassifier_predict_CvMat(
@@ -272,7 +272,7 @@ namespace OpenCvSharp.CPlusPlus
         public virtual float Predict(Mat sample, Mat results = null)
         {
             if (sample == null)
-                throw new ArgumentNullException("sample");
+                throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
             return NativeMethods.ml_CvNormalBayesClassifier_predict_Mat(
@@ -312,9 +312,9 @@ namespace OpenCvSharp.CPlusPlus
 		public override void Write(CvFileStorage storage, string name)
         {
             if (storage == null)
-                throw new ArgumentNullException("storage");
+                throw new ArgumentNullException(nameof(storage));
 			if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
 
             NativeMethods.ml_CvNormalBayesClassifier_write(ptr, storage.CvPtr, name);
         }
@@ -335,9 +335,9 @@ namespace OpenCvSharp.CPlusPlus
 		public override void Read(CvFileStorage storage, CvFileNode node)
         {
             if (storage == null)
-                throw new ArgumentNullException("storage");
+                throw new ArgumentNullException(nameof(storage));
             if (node == null)
-                throw new ArgumentNullException("node");
+                throw new ArgumentNullException(nameof(node));
 
             NativeMethods.ml_CvNormalBayesClassifier_read(ptr, storage.CvPtr, node.CvPtr);
         }

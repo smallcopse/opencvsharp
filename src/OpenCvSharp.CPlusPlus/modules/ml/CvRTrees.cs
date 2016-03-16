@@ -250,7 +250,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
-            return NativeMethods.ml_CvRTrees_predict_CvMat(
+            return NativeMethods.ml_CvRTrees_predict_Mat(
                 ptr, sample.CvPtr, Cv2.ToPtr(missing));
         }
 		#endregion
@@ -301,7 +301,7 @@ namespace OpenCvSharp.CPlusPlus
                 throw new ArgumentNullException(nameof(sample));
             sample.ThrowIfDisposed();
 
-            return NativeMethods.ml_CvRTrees_predict_prob_CvMat(
+            return NativeMethods.ml_CvRTrees_predict_prob_Mat(
                 ptr, sample.CvPtr, Cv2.ToPtr(missing));
         }
         #endregion
