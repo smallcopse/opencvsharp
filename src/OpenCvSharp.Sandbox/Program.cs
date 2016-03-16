@@ -51,12 +51,34 @@ namespace OpenCvSharp.Sandbox
             PolygonTest(img, points);
             //*/
 
-            CaptureTest();
+            CvLoadTest();
+
+            //CaptureTest();
 
             //Mat[] mats = StitchingPreprocess(400, 400, 10);
             //Stitching(mats);
             //Track();
             //Run();
+        }
+
+        private static void CvLoadTest()
+        {
+            for (var i = 0; i < 1000000; i++)
+            {
+                //A potential b.ug in OpenCVSharp marks CvHaarClassifierCascade.IsEnabledDispose = false, preventing the IDispoable pattern from 
+                //cleaning up the memory allocated when loading the face detection features
+                using (var res = Cv.Load<CvHaarClassifierCascade>("data/haarcascade_frontalface_default.xml"))
+                {
+                    if (i%100 == 0)
+                        Console.WriteLine("{0}MB", MyProcess.WorkingSet64 / 1024.0 / 1024.0);
+
+                    res.ToString();
+                    //Calling this method cleans up the region of allocated memory correctly. 
+                    //Comment out these two lines to reproduce the memory leak.
+                    //var ptr = res.CvPtr;
+                    //NativeMethods.cvReleaseHaarClassifierCascade(ref ptr);
+                }
+            }
         }
 
         private static void CaptureTest()
